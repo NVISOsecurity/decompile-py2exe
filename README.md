@@ -11,5 +11,5 @@ Decompile py2exe Python 3 generated EXEs
 
 ## About decompile-py2exe
 
-decompile-py2eexe is developed by Didier Stevens.
+decompile-py2exe is developed by Didier Stevens.
 
