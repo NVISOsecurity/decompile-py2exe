@@ -6,8 +6,8 @@ Decompile py2exe Python 3 generated EXEs
 
 ## Requirements
 
-- tcpdump (natively installed)
-- docker and docker-compose (version 1.6 or later)
+- pefile (can be installed with pip)
+- uncompyle6 (can be installed with pip)
 
 ## About decompile-py2exe
 
