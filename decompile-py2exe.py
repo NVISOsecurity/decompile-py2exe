@@ -2,9 +2,9 @@
 
 __description__ = 'Decompiler for EXEs produced with py2exe Python 3 version'
 __author__ = 'Didier Stevens'
-__version__ = '0.0.1'
-__date__ = '2016/12/14'
-__copyright__ = 'Copyright 2016 NVISO'
+__version__ = '0.0.2'
+__date__ = '2018/07/09'
+__copyright__ = 'Copyright 2016-2018 NVISO'
 __license__ = """
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -25,8 +25,12 @@ https://www.nviso.be
 History:
   2016/12/08: start
   2016/12/14: continue
+  2018/07/09: 0.0.2 update for version uncompyle6 3.
 
 Todo:
+Check if running under Python 3
+except importerror for uncompyle6 and pefile
+exe version (pyinstaller)
 """
 
 import optparse
@@ -39,7 +43,7 @@ import zipfile
 from io import StringIO
 
 try:
-    from uncompyle6.main import uncompyle
+    from uncompyle6.main import decompile
 except:
     print('Missing uncompyle6 Python module, please check if it is installed.')
     exit()
@@ -75,7 +79,7 @@ def Decompilepy2exe(data, pythonversion):
     pythoncode = marshal.loads(data[offset + 1:])
 
     oStringIO = StringIO()
-    uncompyle(pythonversion, pythoncode[-1], oStringIO)
+    decompile(pythonversion, pythoncode[-1], oStringIO)
     print(oStringIO.getvalue())
 
 def GetPythonVersion(data):
@@ -145,7 +149,7 @@ def ProcessFile(filename, options):
 def Main():
     moredesc = '''
 
-Copyright 2016 NVISO
+Copyright 2016-2018 NVISO
 Apache License, Version 2.0
 https://www.nviso.be'''
 
